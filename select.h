@@ -8,7 +8,16 @@ class SelectSort : public Sort {
         SelectSort(void *elements, size_t size) : Sort(elements, size) {}
 
         void execute(void (*compare)(void*, int, int)) {
-            // TODO
+            int *array = (int*) elements;
+            for(int i = 0 ; i < size ; i++){
+            	int min = i;
+            	for(int j = i ; j < size ; j++){
+            		if(array[min] > array[j]){
+            			min = j;
+            		}
+            	}
+            	swap(array[i],array[min]);
+            }
         }
 
         inline string name() { return "SelectSort"; }
